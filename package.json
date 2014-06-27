@@ -6,6 +6,16 @@
     "dependencies" : {
         "request" : "latest",
         "cheerio" : "latest"
+    },
+    "devDependancies" : {
+        "grunt" : "*",
+        "grunt-cli" : "*",
+        "grunt-contrib-watch" : "*",
+        "grunt-shell" : "*",
+        "grunt-mocha-test" : "*",
+        "grunt-mocha-debug" : "*",
+        "mocha" : "1.17.0",
+        "should" : "1.0.0",
+        "sinon" : "1.7.3"
     }
-
 }
