@@ -59,4 +59,22 @@ describe('CommentPresenter', function() {
 
     });
 
+    context('content has no location', function() {
+
+        beforeEach(function() {
+            this.commentWithoutLocation = '<div>  <div>        <div><h3>B Halliday (#1265)</h3></div>  </div>    <span>    <strong>Date Submitted: </strong>    <span><span class="date-display-single" property="dc:date" datatype="xsd:dateTime" content="2012-10-13T00:00:00-04:00">10/13/12</span></span>  </span>    <div>        <div></div>  </div>    <div>    <strong>Comment: </strong>    <div>see attached</div>  </div>    <div class="fr-image">    <strong>Attached Image: </strong>    <div><a href="attachments/images/MailerForm158.jpg"><img typeof="foaf:Image" src="attachments/images/MailerForm158.jpg" width="630" alt=""></a></div>  </div>  </div>';
+
+            this.subject = new CommentPresenter(this.commentWithoutLocation, 'baz');
+        });
+
+        describe('#location', function() {
+
+            it("should return 'not provided'", function() {
+                this.subject.location().should.equal('not provided');
+            });
+
+        });
+
+    });
+
 });
