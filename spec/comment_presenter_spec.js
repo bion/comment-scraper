@@ -35,6 +35,14 @@ describe('CommentPresenter', function() {
 
         });
 
+        describe('#date', function() {
+
+            it('returns the submission date of the comment', function() {
+                this.subject.date().should.equal('12/04/12');
+            });
+
+        });
+
     });
 
 });
