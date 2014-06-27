@@ -5,7 +5,8 @@
     "main"    : "main.js",
     "dependencies" : {
         "request" : "latest",
-        "cheerio" : "latest"
+        "cheerio" : "latest",
+        "node-csv": "0.1.2"
     },
     "devDependancies" : {
         "grunt" : "*",
