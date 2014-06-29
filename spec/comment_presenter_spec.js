@@ -11,6 +11,14 @@ describe('CommentPresenter', function() {
             this.subject = new CommentPresenter(this.commentWithImage, 'foo/');
         });
 
+        describe('#newPresenter', function() {
+
+            it('returns a new presenter', function() {
+                var presenter = CommentPresenter.newPresenter(this.commentWithImage);
+                Object.keys(presenter).should.eql(['comment', 'baseUrl']);
+            });
+        });
+
         describe('#name', function() {
 
             it('returns the name of the comment', function() {
