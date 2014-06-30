@@ -20,11 +20,11 @@ describe('CommentWriter', function() {
 
             beforeEach(function() {
                 presentedComment = {
-                    name: 'name',
-                    number: '2',
-                    location: 'bellingham',
-                    date: '2/2/2',
-                    commentBody: 'the body'
+                    name: sinon.stub().returns('name'),
+                    number: sinon.stub().returns('2'),
+                    location: sinon.stub().returns('bellingham'),
+                    date: sinon.stub().returns('2/2/2'),
+                    commentBody: sinon.stub().returns('the body')
                 };
 
                 this.subject.writeComment(presentedComment);
