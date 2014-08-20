@@ -12,7 +12,8 @@ describe('CommentScraper', function() {
                 numPages: 2,
                 commentContainerSelector: '.comments',
                 columnTemplate: ['name', 'number', 'location', 'date', 'commentBody'],
-                outputFilePath: 'output-path'
+                outputFilePath: 'output-path',
+                outputFormat: 'json'
             };
 
             pageResponseMarkup = '<div class="comments"><div class="comment">foo</div>bar</div>';
@@ -29,7 +30,8 @@ describe('CommentScraper', function() {
             }
 
             this.commentWriterStub = {
-                writeComment: sinon.stub()
+                writeCSVComment: sinon.stub(),
+                writeJSONComment: sinon.stub()
             }
 
             this.fsStub = {
@@ -61,16 +63,38 @@ describe('CommentScraper', function() {
 
         describe('#scrapeComments', function() {
 
-            beforeEach(function() {
-                this.subject.scrapeComments('output-path');
+            context('when outputFormat is json', function() {
+
+                beforeEach(function() {
+                    this.subject.outputFormat = 'csv';
+                    this.subject.scrapeComments('output-path');
+                });
+
+                it('should create a comment collection', function() {
+                    this.subject.commentCollection.should.eql([]);
+                });
+
+                it('should write out the formatted comment contents as json objects', function() {
+                    sinon.assert.calledWith(this.commentWriterStub.writeJSONComment, 'presented-comment');
+                });
+
             });
 
-            it('should write the column header names out', function() {
-                sinon.assert.calledWith(this.writeStreamStub.write, 'name,number,location,date,commentBody\n');
-            });
+            context('when outputFormat is csv', function() {
 
-            it('should write out the formatted comment contents as csv rows', function() {
-                sinon.assert.calledWith(this.commentWriterStub.writeComment, 'presented-comment');
+                beforeEach(function() {
+                    this.subject.outputFormat = 'csv';
+                    this.subject.scrapeComments('output-path');
+                });
+
+                it('should write the column header names out', function() {
+                    sinon.assert.calledWith(this.writeStreamStub.write, 'name,number,location,date,commentBody\n');
+                });
+
+                it('should write out the formatted comment contents as csv', function() {
+                    sinon.assert.calledWith(this.commentWriterStub.writeCSVComment, 'presented-comment');
+                });
+
             });
 
         });
