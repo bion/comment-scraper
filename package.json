@@ -8,7 +8,7 @@
         "cheerio" : "latest",
         "lodash" : "latest"
     },
-    "devDependancies" : {
+    "devDependencies" : {
         "grunt" : "*",
         "grunt-cli" : "*",
         "grunt-contrib-watch" : "*",
