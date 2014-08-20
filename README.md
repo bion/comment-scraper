@@ -1,1 +1,1 @@
-Some of the tests aren't passing. Don't judge me.
+It works. Some of the tests aren't passing. Don't judge me.
