@@ -6,7 +6,8 @@
     "dependencies" : {
         "request" : "latest",
         "cheerio" : "latest",
-        "lodash" : "latest"
+        "lodash" : "latest",
+        "async" : "latest"
     },
     "devDependencies" : {
         "grunt" : "*",
